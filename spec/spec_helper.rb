@@ -29,7 +29,7 @@ SimpleCov.formatters = [
 ]
 
 # Start SimpleCov
-SimpleCov.start
+SimpleCov.start 'rails'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
