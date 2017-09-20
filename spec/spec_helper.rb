@@ -16,8 +16,17 @@
 require 'simplecov'
 require 'codecov'
 
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
+  SimpleCov.coverage_dir(dir)
+end
+
 # Set formatters
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+SimpleCov.formatters = [
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Codecov
+]
 
 # Start SimpleCov
 SimpleCov.start 'rails'
