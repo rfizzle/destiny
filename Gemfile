@@ -40,6 +40,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   # Add rspec
   gem 'rspec-rails', '~> 3.6'
+  gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
 end
 

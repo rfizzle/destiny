@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
+         environment:
+           RAILS_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -37,8 +39,8 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:migrate
 
       # run tests!
       - run:
