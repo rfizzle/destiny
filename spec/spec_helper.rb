@@ -29,7 +29,11 @@ SimpleCov.formatters = [
 ]
 
 # Start SimpleCov
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter 'app/channels'
+  add_filter 'app/jobs'
+  add_filter 'app/mailers'
+end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
