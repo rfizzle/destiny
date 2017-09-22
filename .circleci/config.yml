@@ -50,7 +50,7 @@ jobs:
             MONGODB_URI: mongodb://localhost:27017/destiny
           command: |
             mkdir /tmp/test-results
-            bin/rails rspec
+            bin/rails spec
 
       # Submit Code Coverage to Code Climate
       - run:
