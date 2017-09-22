@@ -50,13 +50,7 @@ jobs:
             MONGODB_URI: mongodb://localhost:27017/destiny
           command: |
             mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-
-            bundle exec rspec --format progress \
-                            --format RspecJunitFormatter \
-                            --out /tmp/test-results/rspec.xml \
-                            --format progress \
-                            "${TEST_FILES}"
+            bin/rails test
 
       # Submit Code Coverage to Code Climate
       - run:
