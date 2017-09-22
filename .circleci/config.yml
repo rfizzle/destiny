@@ -50,7 +50,7 @@ jobs:
             MONGODB_URI: mongodb://localhost:27017/destiny
           command: |
             mkdir /tmp/test-results
-            bundle exec rspec --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec.xml
+            bundle exec rspec --format progress --format RspecJunitFormatter -o /tmp/test-results/rspec.xml
 
       # Submit Code Coverage to Code Climate
       - run:
