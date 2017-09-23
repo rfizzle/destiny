@@ -7,7 +7,7 @@
 
 (function() {
   if (!this.App) {
-    (this.App = {})
+    this.App = {}
   }
 
   App.cable = ActionCable.createConsumer();
