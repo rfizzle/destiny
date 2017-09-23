@@ -6,4 +6,6 @@ class Host
   field :host_names, type: Array
   field :operating_system, type: String
   field :cpe, type: String
+
+  has_many :ports
 end

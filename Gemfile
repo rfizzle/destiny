@@ -39,6 +39,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   # Add rspec
   gem 'rspec-rails', '~> 3.6'
+  gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
 end
