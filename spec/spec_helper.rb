@@ -27,9 +27,6 @@ SimpleCov.formatters = [
   Codacy::Formatter
 ]
 
-# Start Codacy
-Codacy::Reporter.start
-
 # Start SimpleCov
 SimpleCov.start 'rails' do
   add_filter 'app/channels'
