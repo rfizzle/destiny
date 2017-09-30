@@ -12,9 +12,8 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
-
 require 'simplecov'
-require 'codecov'
+require 'codacy-coverage'
 
 # save to CircleCI's artifacts directory if we're on CircleCI
 if ENV['CIRCLE_ARTIFACTS']
@@ -25,8 +24,11 @@ end
 # Set formatters
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Codecov
+  Codacy::Formatter
 ]
+
+# Start Codacy
+Codacy::Reporter.start
 
 # Start SimpleCov
 SimpleCov.start 'rails' do
