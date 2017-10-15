@@ -28,12 +28,6 @@ jobs:
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-      - run:
-          name: Install Code Climate Code Coverage Tool
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
-            chmod +x /tmp/cc-test-reporter
-
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -51,13 +45,6 @@ jobs:
           command: |
             mkdir /tmp/test-results
             bundle exec rspec --format progress --format RspecJunitFormatter -o /tmp/test-results/rspec.xml
-
-      # Submit Code Coverage to Code Climate
-      - run:
-          name: Submit Code Coverage to Code Climate
-          command: |
-            /tmp/cc-test-reporter format-coverage -t simplecov $CIRCLE_ARTIFACTS/coverage/.resultset.json
-            /tmp/cc-test-reporter upload-coverage
 
       # collect reports
       - store_test_results:
