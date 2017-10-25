@@ -1,18 +1,17 @@
 version: '2'
 services:
-  db:
-    image: mongo:3.4
-    container_name: "destiny_mongo"
-    ports:
-      - "27017:27017"
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/destiny
     ports:
-      - "3000:3000"
+      - 3000
     environment:
       - MONGODB_URI="mongodb://db:27017/destiny"
     depends_on:
       - db
+  db:
+    image: mongo:3.4
+    ports:
+      - 27017
