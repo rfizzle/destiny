@@ -23,4 +23,4 @@ COPY . .
 RUN bin/rails assets:precompile
 
 # Execute application
-CMD ["bundle", "exec", "puma", "-b", "unix:///var/www/destiny/tmp/rails.sock", "--pidfile", "/var/www/destiny/tmp/rails.pid"]
+CMD ["bundle", "exec", "rails", "s"]
