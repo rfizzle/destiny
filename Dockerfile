@@ -1,10 +1,10 @@
 FROM ruby:2.4.0
 
 # Install dependencies
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-
-# Install YARN
-RUN npm install yarn -g
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
+    apt-get update -qq && \
+    apt-get install -qq -y build-essential nodejs npm --fix-missing --no-install-recommends && \
+    npm install yarn -g
 
 # Setup destiny directory
 RUN mkdir /destiny
