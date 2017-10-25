@@ -6,6 +6,8 @@ ADD Gemfile /destiny/Gemfile
 ADD Gemfile.lock /destiny/Gemfile.lock
 RUN bundle install
 
-RUN RAILS_ENV=production ./bin/rails assets:precompile
-
 ADD . /destiny
+
+RUN RAILS_ENV=production /destiny/bin/rails assets:precompile
+
+CMD ["/destiny/bin/rails", "s"]
