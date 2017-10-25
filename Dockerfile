@@ -3,7 +3,7 @@ FROM ruby:2.4.0
 # Install dependencies
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get update -qq && \
-    apt-get install -qq -y build-essential nodejs npm --fix-missing --no-install-recommends && \
+    apt-get install -qq -y build-essential nodejs && \
     npm install yarn -g
 
 # Setup destiny directory
