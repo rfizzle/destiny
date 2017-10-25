@@ -7,16 +7,20 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     npm install yarn -g
 
 # Setup destiny directory
-RUN mkdir /destiny
-WORKDIR /destiny
-ADD Gemfile /destiny/Gemfile
-ADD Gemfile.lock /destiny/Gemfile.lock
+ENV RAILS_ROOT /var/www/destiny
+RUN mkdir -p $RAILS_ROOT
+WORKDIR $RAILS_ROOT
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+RUN gem install bundler
 RUN bundle install
-ADD . /destiny
+
+COPY config/puma.rb config/puma.rb
+
+COPY . .
 
 # Precompile Assets
-RUN RAILS_ENV=production /destiny/bin/rails assets:precompile
+RUN bin/rails assets:precompile
 
-# Expose port 3000 and run rails server
-EXPOSE 3000
-CMD ["/destiny/bin/rails", "server"]
+# Execute application
+CMD ["bundle", "exec", "puma", "-b", "unix://$RAILS_ROOT/tmp/rails.sock", "--pidfile", "$RAILS_ROOT/tmp/rails.pid"]
