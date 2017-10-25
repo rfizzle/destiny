@@ -5,14 +5,25 @@ services:
     container_name: "destiny_mongo"
     ports:
         - "27017:27017"
-  web:
+  app:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec puma -b unix:///var/www/destiny/tmp/rails.sock --pidfile /var/www/destiny/tmp/rails.pid
     volumes:
-      - .:/destiny
-    ports:
-      - "3000:3000"
+      - application:/var/www/destiny
     environment:
       - MONGODB_URI="mongodb://db:27017/destiny"
     depends_on:
       - db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    volumes:
+      - application:/var/www/destiny
+    links:
+      - app
+    ports:
+      - "3000:3000"
+
+volumes:
+  application:
