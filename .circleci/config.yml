@@ -3,14 +3,18 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/ruby:2.4-node-browsers
+      environment:
+        RAILS_ENV: test
+
 jobs:
-  - build:
-    docker:
-      - image: circleci/ruby:2.4-node-browsers
-        environment:
-          RAILS_ENV: test
-      - image: circleci/mongo:3.4
-    - steps:
+  build:
+    <<: *defaults
+    steps:
       - checkout
       # Download and cache dependencies
       - restore_cache:
@@ -47,20 +51,15 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-  - deploy:
-    docker:
-      - image: circleci/ruby:2.4-node-browsers
-        environment:
-          RAILS_ENV: test
-
-    working_directory: ~/repo
-
+  deploy:
+    <<: *defaults
     steps:
       - checkout
       - run:
           name: Deploy to Production
           commands:
             - ./bin/deploy
+
 workflows:
   version: 2
   build_and_deploy:
