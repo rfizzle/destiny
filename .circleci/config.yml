@@ -54,10 +54,12 @@ jobs:
           destination: test-results
 
   deploy:
-    name: Deploy to Production
-    requires: build
-    filters:
-      branches:
-        only: master
-    commands:
-      - ./bin/deploy
+    steps:
+      - run:
+          name: Deploy to Production
+          requires: build
+          filters:
+            branches:
+              only: master
+          commands:
+            - ./bin/deploy
