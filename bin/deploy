@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl "https://g.codefresh.io/api/builds/$CODEFRESH_PROJECT_ID" -H 'content-type:application/json; charset=utf-8'  -H "x-access-token: $CODEFRESH_ACCESS_TOKEN" --data-binary '{"repoOwner":"rfizzle","repoName":"destiny","serviceId":"'"$CODEFRESH_PROJECT_ID"'","branch":"master","type":"build"}' --compressed

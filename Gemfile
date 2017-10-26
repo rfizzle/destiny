@@ -59,6 +59,9 @@ gem 'codacy-coverage', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+# Health Monitor
+gem 'health-monitor-rails'
+
 # Trailblazer Core
 gem 'trailblazer'
 gem 'trailblazer-cells'

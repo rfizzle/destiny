@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/destiny
     ports:
-      - 3000
+      - 3000:3000
     environment:
       - MONGODB_URI="mongodb://db:27017/destiny"
     depends_on:
