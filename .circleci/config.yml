@@ -60,15 +60,14 @@ jobs:
           RAILS_ENV: test
 
     working_directory: ~/repo
-
+    requires: build
+    filters:
+      branches:
+        only: master
     steps:
       - checkout
 
       - run:
           name: Deploy to Production
-          requires: build
-          filters:
-            branches:
-              only: master
           commands:
             - ./bin/deploy
