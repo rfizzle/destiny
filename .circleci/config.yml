@@ -58,8 +58,8 @@ jobs:
       - checkout
       - run:
           name: Deploy to Production
-          commands:
-            - ./bin/deploy
+          command: |
+            ./bin/deploy
 
 workflows:
   version: 2
