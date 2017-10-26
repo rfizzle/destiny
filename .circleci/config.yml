@@ -52,8 +52,12 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-  deployment:
-    production:
-      branch: master
-      commands:
-        - ./bin/deploy
+
+  deploy:
+    name: Deploy to Production
+    requires: build
+    filters:
+      branches:
+        only: master
+    commands:
+      - ./bin/deploy
