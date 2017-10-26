@@ -71,4 +71,4 @@ workflows:
             - build
           filters:
             branches:
-              only: stage
+              only: master
