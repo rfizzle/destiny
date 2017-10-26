@@ -10,6 +10,7 @@ defaults: &defaults
     - image: circleci/ruby:2.4-node-browsers
       environment:
         RAILS_ENV: test
+    - image: circleci/mongo:3.4
 
 jobs:
   build:
