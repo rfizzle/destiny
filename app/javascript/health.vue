@@ -26,7 +26,6 @@
     methods: {
       getHealth: function () {
         this.$http.get('/health.json').then(function (response) {
-          console.log(response.data.results);
           this.healths = response.data.results;
         }, function (error) {
           console.log(error.statusText);
