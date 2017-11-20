@@ -4,7 +4,7 @@
 // <%= stylesheet_pack_tag 'health_vue' %>
 
 import Vue from 'vue/dist/vue.esm'
-import Health from '../health.vue'
+import Health from '../components/health.vue'
 
 import VueResource from 'vue-resource'
 
@@ -12,9 +12,9 @@ Vue.use(VueResource);
 
 document.addEventListener('DOMContentLoaded', () => {
   const health = new Vue({
-    el: '#health',
+    el: '#app',
     data: {
-      healths: []
+      statuses: []
     },
     components: { Health }
   })

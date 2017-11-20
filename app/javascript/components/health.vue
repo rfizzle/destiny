@@ -3,30 +3,31 @@
     <div class="container">
       <div class="statuses">
         <h1>Status Page</h1>
-        <div v-for="health in healths">
+        <div v-for="status in statuses">
           <div class="status">
             <div class="status-heading">
-              <span class="name">{{health.name}}</span>
-              <span class="state">{{health.status}}</span>
+              <span class="name">{{status.name}}</span>
+              <span class="state">{{status.status}}</span>
             </div>
-            <div class="message">{{health.message}}</div>
+            <div class="message">{{status.message}}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
   module.exports = {
     data: function() {
       return {
-        healths: []
+        statuses: []
       }
     },
     methods: {
       getHealth: function () {
         this.$http.get('/health.json').then(function (response) {
-          this.healths = response.data.results;
+          this.statuses = response.data.results;
         }, function (error) {
           console.log(error.statusText);
         });
@@ -37,6 +38,7 @@
     }
   }
 </script>
+
 <style>
   body {
     line-height: 2rem;
@@ -116,19 +118,8 @@
     color: #666;
   }
 
-  .statuses .timestamp {
-    width: 130px;
-    color: #999;
-  }
-
   .statuses .status-error .state {
     color: red;
-  }
-
-  .powered {
-    text-align: center;
-    margin-top: 10px;
-    color: #aaa;
   }
 
   .powered a {
