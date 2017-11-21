@@ -28,7 +28,9 @@
       }
     },
     mounted: function () {
-      this.getHealth();
+      this.$nextTick(function () {
+        this.getHealth();
+      });
     }
   }
 </script>
