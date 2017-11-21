@@ -37,6 +37,11 @@ jobs:
       - run:
           name: Wait for MongoDB to start
           command: dockerize -wait tcp://localhost:27017 -timeout 1m
+      # Compile assets
+      - run:
+          name: Compile Assets
+          command: |
+            ./bin/rails webpacker:compile
       # Run RSpec Tests
       - run:
           name: Run RSpec Tests
