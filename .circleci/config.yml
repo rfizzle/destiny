@@ -33,10 +33,30 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      # Only necessary if app uses webpacker or yarn in some other way
+      - type: cache-restore
+        name: Restore yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Yarn Install
+          command: yarn install
+
+      # Store yarn / webpacker cache
+      - type: cache-save
+        name: Store yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.yarn-cache
+
       # Wait for Mongo to start
       - run:
           name: Wait for MongoDB to start
           command: dockerize -wait tcp://localhost:27017 -timeout 1m
+      # Install NPM
+      - run:
+          name: Install NPM
+          command: npm install
       # Compile assets
       - run:
           name: Compile Assets
