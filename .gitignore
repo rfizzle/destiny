@@ -11,6 +11,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 /.idea
+/public/assets
 
 # Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -42,3 +43,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+/public/packs
+/public/packs-test
+/node_modules

@@ -17,26 +17,53 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+
       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+
       # Install dependencies
       - run:
           name: Install Dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+
       # Save dependencies in cache
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - type: cache-restore
+        name: Restore yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Yarn Install
+          command: yarn install
+
+      # Store yarn / webpacker cache
+      - type: cache-save
+        name: Store yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.yarn-cache
+
       # Wait for Mongo to start
       - run:
           name: Wait for MongoDB to start
           command: dockerize -wait tcp://localhost:27017 -timeout 1m
+
+      # Compile assets
+      - run:
+          name: Compile Assets
+          command: |
+            ./bin/rails webpacker:compile
+
       # Run RSpec Tests
       - run:
           name: Run RSpec Tests
