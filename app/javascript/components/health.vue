@@ -4,13 +4,7 @@
       <div class="statuses">
         <h1>Status Page</h1>
         <div v-for="status in statuses">
-          <div class="status">
-            <div class="status-heading">
-              <span class="name">{{status.name}}</span>
-              <span class="state">{{status.status}}</span>
-            </div>
-            <div class="message">{{status.message}}</div>
-          </div>
+          <health-status :status="status"></health-status>
         </div>
       </div>
     </div>
@@ -87,39 +81,6 @@
     background: #f9f9f9;
     padding: 10px;
     border-bottom: 1px solid #eee;
-  }
-
-  .statuses .status {
-    font-size: 14px;
-    border-bottom: 1px solid #eee;
-    padding: 15px;
-  }
-
-  .statuses .status:last-child {
-    border-bottom: 0px;
-  }
-
-  .statuses .name {
-    font-size: 20px;
-    margin-right: 20px;
-    min-width: 100px;
-    font-weight: bold;
-    color: #555;
-  }
-
-  .statuses .state {
-    font-size: 14px;
-    float: right;
-    width: 80px;
-    color: #45b81d;
-  }
-
-  .statuses .message {
-    color: #666;
-  }
-
-  .statuses .status-error .state {
-    color: red;
   }
 
   .powered a {
