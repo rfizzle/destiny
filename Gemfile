@@ -12,7 +12,7 @@ gem 'mongoid', '~> 6.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -62,7 +62,7 @@ gem 'codacy-coverage', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Health Monitor
-gem 'health-monitor-rails'
+gem 'health-monitor-rails', '>= 7.2.3'
 
 # Trailblazer Core
 gem 'trailblazer'
