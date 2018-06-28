@@ -12,7 +12,7 @@ gem 'mongoid', '~> 6.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -43,16 +43,16 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
   gem 'rspec_junit_formatter'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 3.5.2'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.1.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.0.1'
 end
 
 # Code Coverage
