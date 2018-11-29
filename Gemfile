@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 # Use mongoid as the database
 gem 'mongoid', '~> 6.2.1'
 # Use Puma as the app server
@@ -62,7 +62,7 @@ gem 'codacy-coverage', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Health Monitor
-gem 'health-monitor-rails'
+gem 'health-monitor-rails', '>= 7.2.3'
 
 # Trailblazer Core
 gem 'trailblazer'
