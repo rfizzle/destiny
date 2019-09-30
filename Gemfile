@@ -43,7 +43,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
   gem 'rspec_junit_formatter'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 3.5.2'
 end
 
 group :development do
