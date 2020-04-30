@@ -56,7 +56,7 @@ group :development do
 end
 
 # Code Coverage
-gem 'codacy-coverage', require: false
+gem 'codacy-coverage', '>= 1.1.8', require: false
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
