@@ -62,7 +62,7 @@ gem 'codacy-coverage', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Health Monitor
-gem 'health-monitor-rails'
+gem 'health-monitor-rails', '>= 7.2.3'
 
 # Trailblazer Core
 gem 'trailblazer'
