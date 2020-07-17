@@ -2,7 +2,7 @@
   "name": "destiny",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "^3.2.2",
     "coffeescript": "1.12.7",
     "vue": "^2.5.3",
     "vue-loader": "^13.5.0",
